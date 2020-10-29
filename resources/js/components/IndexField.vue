@@ -16,6 +16,7 @@
           {{ resource.text }} {{ field.value.length - index - 1 ? ' , ' : ''  }}
         </router-link>  
       </template>
+      <!-- TODO: figure out if 'slote' is intentional -->
       <p v-else slote="value">&mdash;</p>
     </span> 
 </template>
