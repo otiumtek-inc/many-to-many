@@ -19,7 +19,7 @@ A Laravel Nova field for polymorphic and non-polymorphic `ManyToMany` relationsh
 
 ## Install
 ```bash
-composer require juul/many-to-many
+composer require martinjuul/many-to-many
 ``` 
   
 ## Simple Usage  
