@@ -212,7 +212,6 @@ abstract class ManyToMany extends Field
     public function normalize($attachment)
     {  
         $attachment['attached'] = filter_var($attachment['attached'], FILTER_VALIDATE_BOOLEAN);
-        $attachment['id'] = (int) $attachment['id'];
 
         return $attachment;
     }
