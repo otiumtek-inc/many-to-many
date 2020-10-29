@@ -1,10 +1,10 @@
 <?php
 
-namespace Armincms\Fields\Http\Controllers;
+namespace Juul\Fields\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Armincms\Fields\BelongsToMany;
-use Armincms\Fields\MorphToMany;
+use Juul\Fields\BelongsToMany;
+use Juul\Fields\MorphToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class AttachableController extends Controller

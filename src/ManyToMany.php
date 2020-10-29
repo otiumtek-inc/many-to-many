@@ -1,6 +1,6 @@
 <?php
 
-namespace Armincms\Fields;
+namespace Juul\Fields;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -21,7 +21,7 @@ abstract class ManyToMany extends Field
      *
      * @var string
      */
-    public $component = 'armincms-belongs-to-many'; 
+    public $component = 'juul-belongs-to-many';
 
     /**
      * The class name of the related resource.

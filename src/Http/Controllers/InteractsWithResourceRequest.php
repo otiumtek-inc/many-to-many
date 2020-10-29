@@ -1,6 +1,6 @@
 <?php
 
-namespace Armincms\Fields\Http\Controllers;
+namespace Juul\Fields\Http\Controllers;
  
 use Laravel\Nova\Http\Requests\NovaRequest; 
 

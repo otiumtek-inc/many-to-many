@@ -19,13 +19,13 @@ A Laravel Nova field for polymorphic and non-polymorphic `ManyToMany` relationsh
 
 ## Install
 ```bash
-composer require armincms/many-to-many
+composer require juul/many-to-many
 ``` 
   
 ## Simple Usage  
 
 ```  
-  use Armincms\Fields\BelongsToMany;  
+  use Juul\Fields\BelongsToMany;  
   
 
   
@@ -56,7 +56,7 @@ For customizing the pivot columns when attaching a resource you can use the `piv
 
 
 ```  
-  use Armincms\Fields\BelongsToMany;  
+  use Juul\Fields\BelongsToMany;  
   
 
   
@@ -88,7 +88,7 @@ You can use the `duplicate` feature for repetitively attach a resource to anothe
 
 
 ```  
-  use Armincms\Fields\BelongsToMany;  
+  use Juul\Fields\BelongsToMany;  
   
 
   
@@ -118,7 +118,7 @@ Using for the polymorphic relationships is like non-polymorphic. follow the exam
 
 
 ```  
-  use Armincms\Fields\MorphToMany;  
+  use Juul\Fields\MorphToMany;  
   
 
   
@@ -148,7 +148,7 @@ Using for the polymorphic relationships is like non-polymorphic. follow the exam
 or
 
 ```  
-  use Armincms\Fields\MorphedByMany;  
+  use Juul\Fields\MorphedByMany;  
   
 
   

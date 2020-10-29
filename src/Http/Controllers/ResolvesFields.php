@@ -1,6 +1,6 @@
 <?php
 
-namespace Armincms\Fields\Http\Controllers;
+namespace Juul\Fields\Http\Controllers;
  
 use Illuminate\Database\Eloquent\Relations\Pivot; 
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\FieldCollection;
 use Laravel\Nova\Contracts\ListableField;
 use Laravel\Nova\Contracts\Resolvable;
 use Laravel\Nova\ResourceToolElement;
-use Armincms\Fields\ManyToMany; 
+use Juul\Fields\ManyToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Nova;
 

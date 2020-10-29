@@ -1,6 +1,6 @@
 <?php
 
-namespace Armincms\Fields;
+namespace Juul\Fields;
 
 use Laravel\Nova\Rules\Relatable; 
 use Laravel\Nova\Nova;
