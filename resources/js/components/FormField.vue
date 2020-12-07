@@ -322,7 +322,7 @@ export default {
 
       validateRequest(resource) {
         return Nova.request().post(
-            `/nova-api/juul/${this.resourceName}/pivots-validate/${this.field.resourceName}`,
+            `/nova-vendor/many-to-many/${this.resourceName}/pivots-validate/${this.field.resourceName}`,
             this.attachmentFormData,
             {
               params: { 
@@ -374,7 +374,7 @@ export default {
       getAvailableResources(search = '') { 
         Nova.request()
           .get(
-            `/nova-api/juul/${this.resourceName}/attachable/${this.field.resourceName}`,
+            `/nova-vendor/many-to-many/${this.resourceName}/attachable/${this.field.resourceName}`,
             {
               params: {
                 search,
@@ -392,7 +392,7 @@ export default {
       getAttachedResources(search = '') { 
         Nova.request()
           .get(
-            `/nova-api/juul/${this.resourceName}/attached/${this.field.resourceName}`,
+            `/nova-vendor/many-to-many/${this.resourceName}/attached/${this.field.resourceName}`,
             {
               params: {
                 search,
@@ -417,7 +417,7 @@ export default {
       async getPivotFields(resource) {   
         await Nova.request()
           .get(
-            `/nova-api/juul/${this.resourceName}/pivot-fields/${this.field.resourceName}`,
+            `/nova-vendor/many-to-many/${this.resourceName}/pivot-fields/${this.field.resourceName}`,
             {
               params: { 
                 resourceId: this.resourceId,

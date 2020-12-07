@@ -16,14 +16,14 @@ class FieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('juul-belongs-to-many', __DIR__.'/../dist/js/field.js');
-            Nova::style('juul-belongs-to-many', __DIR__.'/../dist/css/field.css');
+            Nova::script('juul-belongs-to-many', __DIR__ . '/../dist/js/field.js');
+            Nova::style('juul-belongs-to-many', __DIR__ . '/../dist/css/field.css');
         });
 
-        $this->app->booted(function() {
+        $this->app->booted(function () {
             $this->routes();
         });
-    } 
+    }
 
     /**
      * Register the tool's routes.
@@ -37,9 +37,9 @@ class FieldServiceProvider extends ServiceProvider
         }
 
         \Route::middleware(['nova'])
-                ->prefix('nova-api/juul')
-                ->namespace(__NAMESPACE__.'\\Http\\Controllers')
-                ->group(__DIR__.'/../routes/api.php');
+            ->prefix('nova-vendor/many-to-many')
+            ->namespace(__NAMESPACE__ . '\\Http\\Controllers')
+            ->group(__DIR__ . '/../routes/api.php');
     }
 
     /**
