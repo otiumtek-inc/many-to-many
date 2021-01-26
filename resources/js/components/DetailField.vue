@@ -2,15 +2,25 @@
   <panel-item :field="field">
     <template slot="value" v-if="field.value && field.value.length">
       <span v-if="field.pivots"> 
-      	<span  
+      	<div  
+		  	style="display: flex; align-items: center; margin-bottom: 5px"
       		class="no-underline font-bold dim text-primary cursor-pointer"
         	v-for="(resource, index) in field.value"
         	:key="resource.id"
         	@click="displayPivots(resource)"
         	:title="__(':resource Details', { resource: resource.text })"
         >
-          {{ resource.text }} {{ field.value.length - index - 1 ? ' , ' : '' }}
-        </span>
+		  <table class="container-pivot" style="table-layout: auto">
+		  	<tr v-if="index == 0">
+				<td></td>
+				<td v-for="pivotvalue in pivotsDisplay(resourceName, field.value, resource.pivotId, 'label')" :key="pivotvalue.label">{{pivotvalue['label']}}</td>
+			</tr>
+			<tr>
+				<td>{{resource.text}}</td>
+				<td v-for="pivotvalue in pivotsDisplay(resourceName, field.value, resource.pivotId, 'value')" :key="pivotvalue.label">{{pivotvalue['value']}}</td>
+			</tr>  
+		  </table>	
+        </div>
       </span> 
       <span v-else>
         <router-link 
@@ -88,15 +98,26 @@
 <script>
 export default {
     props: ['resource', 'resourceName', 'resourceId', 'field'],
-
+	mounted (){
+	},
     data() {
     	return {
     		display: false,
     		fields: [],
     	}
     },
-
+	computed: {
+		
+	},
     methods: {
+		pivotsDisplay(resourceName, value, pivotId){
+			console.log(resourceName, value);
+			let v = value.find((e) => e.pivotId == pivotId);
+			if(resourceName == 'menus' && v){
+				return v.pivot_info;
+			}
+			return [];
+		},
     	displayPivots(resource) {
     		this.display = resource;
     		this.loading = false;
@@ -110,7 +131,7 @@ export default {
       async getPivotFields(resource) {   
         await Nova.request()
           .get(
-            `/nova-api/juul/${this.resourceName}/pivot-fields/${this.field.resourceName}`,
+            `/nova-vendor/many-to-many/${this.resourceName}/pivot-fields/${this.field.resourceName}`,
             {
               params: { 
                 resourceId: this.resourceId,
@@ -148,3 +169,14 @@ export default {
     },
 }
 </script>
+
+<style>
+	.container-pivot {
+  table-layout: fixed ;
+  width: 100% ;
+}
+.container-pivot td {
+  width: 25% ;
+  padding: 10px;
+}
+</style>
