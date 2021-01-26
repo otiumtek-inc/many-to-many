@@ -88,6 +88,9 @@ abstract class ManyToMany extends Field
     public $displaysWithTrashed = true;
 
 
+    public $pivotsConfig = [];
+
+
     /**
      * Create a new field.
      *
@@ -366,10 +369,11 @@ abstract class ManyToMany extends Field
     public function formatAttachableResource(NovaRequest $request, $resource, $attached = false)
     {
         return array_filter([
-            'avatar'    => $resource->resolveAvatarUrl($request),
-            'text'      => $this->formatDisplayValue($resource),
-            'id'        => $resource->getKey(),
-            'attached'  => $attached,
+            'avatar'     => $resource->resolveAvatarUrl($request),
+            'pivot_info' => $this->showFieldsPivot($resource->pivot != null ? $resource->pivot->attributesToArray() : []),
+            'text'       => $this->formatDisplayValue($resource),
+            'id'         => $resource->getKey(),
+            'attached'   => $attached,
         ]);
     }
 
@@ -423,6 +427,18 @@ abstract class ManyToMany extends Field
     }
 
     /**
+     * Set the pivots attachment status.
+     *
+     * @return string
+     */
+    public function pivotsConfig($pivotsConfig)
+    {
+        $this->pivotsConfig = $pivotsConfig;
+
+        return $this;
+    }
+
+    /**
      * hides the "With Trashed" option.
      *
      * @return $this
@@ -449,5 +465,15 @@ abstract class ManyToMany extends Field
             'pivots'        => $this->pivots, 
             'withTrashed'   => $this->displaysWithTrashed, 
         ], parent::jsonSerialize());
+    }
+
+    public function showFieldsPivot($values){
+        return $this->pivotsConfig->map(function($e) use ($values){
+            
+            if(isset($e['key']) && isset($values[$e['key']])){
+                return ['label' => $e['label'], 'value'=> $e['transform']($values[$e['key']])];
+            }
+            return [];
+        });
     }
 }
